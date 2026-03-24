@@ -10,7 +10,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "https://fr-voice-video.vercel.app/",
+        origin: "*",
         credentials: true
     }
 });
