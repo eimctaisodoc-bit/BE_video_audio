@@ -31,7 +31,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")))
 
 app.get("/", (req, res) => {
-    res.status(200).json({ Msg: " server is running , backend is running  , " })
+    res.status(200).json({ Msg: "updated   , " })
 });
 
 io.on('connection', (socket) => {
