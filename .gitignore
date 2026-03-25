@@ -43,3 +43,4 @@ coverage/
 
 # Uploads (if you store files locally)
 uploads/
+.vercel
