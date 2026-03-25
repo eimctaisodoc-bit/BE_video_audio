@@ -16,7 +16,7 @@ app.use(cors({
   credentials: true
 }));
 
-app.options('/*', cors());
+
 
 
 app.use(express.json());
@@ -31,10 +31,10 @@ const io = new Server(server, {
      "https://fr-voice-video.vercel.app/"
     ],
     methods: ["GET", "POST"],
-    credentials: true,
-    allowEIO3: true, 
-  transports: ['polling', 'websocket']
+    credentials: true
   }
+   allowEIO3: true, 
+  transports: ['polling', 'websocket']
 });
 
 
