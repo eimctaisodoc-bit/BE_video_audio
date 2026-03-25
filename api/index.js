@@ -8,6 +8,12 @@ const cors = require('cors')
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://fr-voice-video.vercel.app"
+];
+
+
 app.use(cors({
   origin: [
     "http://localhost:5173",
@@ -17,10 +23,24 @@ app.use(cors({
 }));
 
 
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
 
+  if (allowedOrigins.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin);
+  }
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+
+  next();
+});
+
 
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -39,6 +59,9 @@ const io = new Server(server, {
 
 
 
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 
 app.set("view engine", "pug");
