@@ -13,9 +13,14 @@ app.use(express.urlencoded({ extended: true }));
 
 const server = http.createServer(app);
 const io = new Server(server, {
-    cors: {
-        origin: "*",
-    }
+  cors: {
+    origin: [
+      "http://localhost:5173",
+     "https://fr-voice-video.vercel.app/"
+    ],
+    methods: ["GET", "POST"],
+    credentials: true
+  }
 });
 
 
