@@ -7,9 +7,15 @@ const cors = require('cors')
 
 
 const app = express();
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+     "https://fr-voice-video.vercel.app/"
+  ],
+  credentials: true
+}));
 
 
-app.options("*", cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -37,7 +43,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")))
 
 app.get("/", (req, res) => {
-    res.status(200).json({ Msg: "updated 2222  , " })
+    res.status(200).json({ Msg: "updated 22  , " })
 });
 
 io.on('connection', (socket) => {
