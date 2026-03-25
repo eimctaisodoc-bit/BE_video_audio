@@ -7,14 +7,7 @@ const cors = require('cors')
 
 
 const app = express();
-app.use(cors({
-  origin: [
-   "http://localhost:5173",
-    "https://fr-voice-video.vercel.app/"
-  ],
-  credentials: true,
-  methods: ["GET", "POST", "OPTIONS"]
-}));
+
 
 app.options("*", cors());
 
