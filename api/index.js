@@ -24,17 +24,17 @@ app.use(express.urlencoded({ extended: true }));
 
 const server = http.createServer(app);
 const io = new Server(server, {
-  path: '/socket.io/',
+  path: "/socket.io/",
   cors: {
     origin: [
       "http://localhost:5173",
-     "https://fr-voice-video.vercel.app/"
+      "https://fr-voice-video.vercel.app" 
     ],
     methods: ["GET", "POST"],
     credentials: true
-  }
-   allowEIO3: true, 
-  transports: ['polling', 'websocket']
+  }, // ✅ comma added here
+  allowEIO3: true,
+  transports: ["polling", "websocket"]
 });
 
 
